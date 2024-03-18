@@ -1,6 +1,6 @@
 import openai
 
-api_key = "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"
+api_key = ""
 openai.api_key = api_key
 
 print("Welcome! How can I assist you today?\n")

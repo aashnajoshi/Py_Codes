@@ -1,3 +1,4 @@
+#openai==0.28
 import openai
 
 api_key = ""

@@ -11,7 +11,6 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:  # Ignore messages from bot
             return
-
         if self.user in message.mentions:  # Check bot mention
             if any(word in message.content.lower() for word in ["hi", "hello", "hey", "greetings"]):
                 await message.channel.send(f"Hello {message.author.mention}! I am a Work-In-Progress GPT Bot!")
@@ -27,6 +26,5 @@ class MyClient(discord.Client):
 
 intents = discord.Intents.default()
 intents.messages = True
-
 client = MyClient(intents=intents)
 client.run('YOUR_DISCORD_BOT_TOKEN')

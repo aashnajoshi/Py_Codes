@@ -1,7 +1,6 @@
 import turtle as t
 import colorsys
 
-#t = turtle.Turtle()
 screen = t.Screen()
 screen.bgcolor('black')
 screen.title('Rainbow')
@@ -30,4 +29,3 @@ for i in range(colors):
     hue+=0.9/colors
 
 t.done()
-

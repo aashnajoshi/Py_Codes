@@ -1,20 +1,27 @@
 def convert_to_morse(code):
+    morse_code = {'1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+                  '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----'}
+    return ' '.join(morse_code[char] for char in code if char in morse_code)
 
-    code = code.replace("1", ".----")
-    code = code.replace("2", "..---")
-    code = code.replace("3", "...--")
-    code = code.replace("4", "....-")
-    code = code.replace("5", ".....")
-    code = code.replace("6", "-....")
-    code = code.replace("7", "--...")
-    code = code.replace("8", "---..")
-    code = code.replace("9", "---.")
-    code = code.replace("0", "----")
+def convert_from_morse(code):
+    morse_code = {'.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5',
+                  '-....': '6', '--...': '7', '---..': '8', '----.': '9', '-----': '0'}
+    return ''.join(morse_code[word] for word in code.split() if word in morse_code)
 
-    return code
+def main():
+    print("Welcome to Morse Code Converter!")
+    while True:
+        print("\nMENU:\n1. Encode to Morse Code\n2. Decode from Morse Code\n3. Exit")
+        choice = input("Enter your choice (1/2/3): ")
+        if choice == '1':
+            print(f"Morse Code: {convert_to_morse(input('Enter numbers to be converted (with spaces in between): '))}")
+        elif choice == '2':
+            print(f"Decoded: {convert_from_morse(input('Enter Morse Code to be decoded (separate letters with spaces): '))}")
+        elif choice == '3':
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option (1/2/3).")
 
-lock_code = int(input("Enter numbers to be converted (with space on between)"))
-print(f"Initial code:", lock_code)
-
-morse = convert_to_morse(lock_code)
-print(f"Morse Code: {morse}")
+if __name__ == "__main__":
+    main()

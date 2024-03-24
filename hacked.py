@@ -24,5 +24,4 @@ def placewindows():
         time.sleep(.05)
 
 threading.Thread(target=placewindows).start()
-
 root.mainloop()

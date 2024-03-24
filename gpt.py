@@ -1,8 +1,7 @@
 # openai==0.28
 import openai
 
-api_key = ""
-openai.api_key = api_key
+openai.api_key = "YOUR_OPENAI_API_KEY"
 print("Welcome! How can I assist you today?\n")
 
 while True:

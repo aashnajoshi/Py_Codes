@@ -39,8 +39,7 @@ def main():
         else:
             print("Invalid input. Skipping this question.")
         print(f"Your current score is: {score}/{i}")
-    print("Quiz completed!")
-    print(f"Your final score is: {score}/{total_questions}")
+    print(f"Quiz completed!\nYour final score is: {score}/{total_questions}")
 
 if __name__ == "__main__":
     main()

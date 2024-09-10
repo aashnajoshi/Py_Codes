@@ -1,15 +1,6 @@
+"""Audio is captured using pyaudio then converted from binary data to ints using struct and finally it is displayed using matplotlib"""
 
-"""
-Notebook for streaming data from a microphone in realtime
-audio is captured using pyaudio
-then converted from binary data to ints using struct
-then displayed using matplotlib
-if you don't have pyaudio, then run
->>> pip install pyaudio
-note: with 2048 samples per chunk, I'm getting 20FPS
-"""
-
-import pyaudio
+import pyaudio #pyaudio
 import os
 import struct
 import numpy as np
@@ -17,10 +8,6 @@ import matplotlib.pyplot as plt
 import time
 from tkinter import TclError
 
-# use this backend to display in separate Tk window
-56
-
-# constants
 CHUNK = 1024 * 2             # samples per frame
 FORMAT = pyaudio.paInt16     # audio format (bytes per sample?)
 CHANNELS = 1                 # single channel for microphone
@@ -43,15 +30,7 @@ for i in range(0, numdevices):
 audio_input = input("\n\nSelect input by Device id: ")
 
 # stream object to get data from microphone
-stream = p.open(
-    input_device_index=int(audio_input),
-    format=FORMAT,
-    channels=CHANNELS,
-    rate=RATE,
-    input=True,
-    output=True,
-    frames_per_buffer=CHUNK
-)
+stream = p.open(input_device_index=int(audio_input), format=FORMAT, channels=CHANNELS, rate=RATE, input=True, output=True, frames_per_buffer=CHUNK)
 
 # variable for plotting
 x = np.arange(0, 2 * CHUNK, 2)
@@ -69,37 +48,28 @@ plt.setp(ax, xticks=[0, CHUNK, 2 * CHUNK], yticks=[0, 128, 255])
 
 # show the plot
 plt.show(block=False)
-
 print('stream started')
 
-# for measuring frame rate
-frame_count = 0
+frame_count = 0 # for measuring frame rate
 start_time = time.time()
 
 while True:
-
-    # binary data
-    data = stream.read(CHUNK)
+    data = stream.read(CHUNK) # binary data
 
     # convert data to integers, make np array, then offset it by 127
     data_int = struct.unpack(str(2 * CHUNK) + 'B', data)
 
     # create np array and offset by 128
     data_np = np.array(data_int, dtype='b')[::2] + 128
-
     line.set_ydata(data_np)
 
-    # update figure canvas
     try:
         fig.canvas.draw()
         fig.canvas.flush_events()
         frame_count += 1
 
     except TclError:
-
-        # calculate average frame rate
-        frame_rate = frame_count / (time.time() - start_time)
-
+        frame_rate = frame_count / (time.time() - start_time) # calculate average frame rate
         print('stream stopped')
         print('average frame rate = {:.0f} FPS'.format(frame_rate))
         break

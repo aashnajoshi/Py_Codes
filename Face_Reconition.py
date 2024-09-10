@@ -12,13 +12,10 @@ from skimage.feature import local_binary_pattern
 import numpy as np
 
 logging.basicConfig(level=logging.INFO)
-
 app = Flask(__name__)
 
 # MongoDB configuration
 app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost:27017/pranjal')
-
-# Initializing MongoDB
 mongo = PyMongo(app)
 
 @app.route('/')
@@ -53,9 +50,9 @@ def texture_analysis_lbp(image):
 def detect_blink():
     total_frames = 20
     blink_detected = False
-    
     camera = cv2.VideoCapture(0)
     frame_count = 0
+
     while frame_count < total_frames:
         ret, frame = camera.read()
         if not ret:
@@ -75,7 +72,6 @@ def detect_blink():
     
     camera.release()
     return blink_detected
-
 
 def motion_analysis():
     camera = cv2.VideoCapture(0)
@@ -109,14 +105,12 @@ def motion_analysis():
     finally:
         camera.release()
 
-
 def noise_analysis(frame):
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     noise_level = np.var(gray_frame)
     if noise_level < 10:  # This threshold can be adjusted based on experimentation
         raise ValueError("Potential spoof detected based on screen noise!")
     return True
-
 
 def capture_face(prompt_message=""):
     # If you have a prompt message, show it here (like "Look left").
@@ -159,7 +153,6 @@ def capture_face(prompt_message=""):
     finally:
         camera.release()
         cv2.destroyAllWindows()
-
 
 def capture_fingerprint():
     """Captures and returns the fingerprint encoding."""
@@ -220,8 +213,7 @@ def signup():
     # Using the uuid as a temporary token for the frontend to use
     temp_token = uuid.uuid4().hex
 
-    # Storing the encodings with the temporary token
-    # We won't store the user in the main user collection until all details are provided
+    # Storing the encodings with the temporary token. We won't store the user in the main user collection until all details are provided
     temp_user = {
         "_id": temp_token,
         "fingerprints": fingerprint_encodings,
@@ -262,7 +254,6 @@ def complete_signup():
         logging.error(f"Error during signup completion: {e}")
         raise HTTPException(description="Error during signup completion!", code=400)
 
-
 @app.route('/login', methods=['POST'])
 def login():
     captured_face_encoding = capture_face()
@@ -284,6 +275,7 @@ def login():
         captured_fingerprint = capture_fingerprint()
         if is_fingerprint_recognized(recognized_user["fingerprints"], captured_fingerprint):
             return jsonify(success=True, message='Face and fingerprint recognized!', user_id=recognized_user['_id']), 200
+            
         else:
             raise HTTPException(description="Fingerprint not recognized!", code=400)
     else:
@@ -291,4 +283,3 @@ def login():
 
 if __name__ == "__main__":
     app.run(debug=True)
-

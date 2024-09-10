@@ -4,7 +4,6 @@ import colorsys
 screen = t.Screen()
 screen.bgcolor('black')
 screen.title('Rainbow')
-
 t.speed(0)
 t.hideturtle()
 t.setup(700,700)

@@ -5,6 +5,7 @@ import time
 import threading
 
 root = Tk()
+
 root.attributes("-alpha", 0)
 root.overrideredirect(1)
 root.attributes("-topmost", 1)
@@ -18,9 +19,11 @@ def placewindows():
         win.lift()
         win.attributes("-topmost", True)
         win.attributes("-topmost", False)
+
         root.lift()
         root.attributes("-topmost", True)
         root.attributes("-topmost", False)
+
         time.sleep(.05)
 
 threading.Thread(target=placewindows).start()

@@ -1,13 +1,9 @@
 import turtle
-from turtle import*
 
 #screen for output
 screen = turtle.Screen()
 screen.title("Indian Flag")
-
-#Defining a turtle instance
 t = turtle.Turtle()
-speed(0)
 
 #initial pen-up
 t.penup()
@@ -91,5 +87,4 @@ for i in range(24):
     t.backward(60)
     t.left(15)
     
-#to hold the output window
-turtle.done()
+turtle.done() #to hold the output window

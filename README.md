@@ -8,7 +8,8 @@ This repository includes:
 - Algorithms (e.g., Cipher, Morse code encoder)
 - Data visualization and manipulation (e.g., Audio Visualization Tool, text-to-speech)
 
-## All required libraries can be installed using a single-line command:
+## Usage
+### All required libraries can be installed using a single-line command:
 ```bash
 pip install -r requirements.txt
 ```

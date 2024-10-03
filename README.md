@@ -1,37 +1,24 @@
 # Py_Codes
-
 This repository features a diverse collection of Python scripts ranging from automation tools and utilities to fun games and algorithmic implementations. Whether you're looking to retrieve Wi-Fi passwords, simulate slot machines, encode Morse code, or visualize audio, these scripts offer a mix of practical utilities and entertaining projects. Explore and leverage these Python examples for automation, data manipulation, game development, and more.
 
 ## Project Overview
-
 This repository includes:
-- **Automation tools** (e.g., Wifi password retriever, voice recorder)
-- **Fun games and utilities** (e.g., Quiz game, Slot machine, Flag display)
-- **Algorithms** (e.g., Cipher, Morse code encoder)
-- **Data visualization and manipulation** (e.g., Audio Visualization Tool, Text to Speech)
+- Automation tools (e.g., Wifi password retriever, voice recorder)
+- Fun games and utilities (e.g., Quiz game, Slot machine, Flag display)
+- Algorithms (e.g., Cipher, Morse code encoder)
+- Data visualization and manipulation (e.g., Audio Visualization Tool, text-to-speech)
 
-## Installation
+## All required libraries can be installed using a single-line command:
+```bash
+pip install -r requirements.txt
+```
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/aashnajoshi/Py_Codes.git
-    cd Py_Codes
-    ```
+### While to run the code:
+```bash
+python {file_name}.py
+```
 
-2. Install required libraries:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Run individual Python scripts:
-    ```bash
-    python {file_name}.py
-    ```
-
-## Scripts Overview
-
-Here is a brief overview of the scripts included in this repository:
-
+## Description about various files:
 - **Audio_Visualization_Tool.py:** Visualizes audio signals using various graphical representations.
 - **Cipher.py:** Encrypts and decrypts text using basic cipher techniques.
 - **Face_Recognition.py:** A basic face recognition implementation using `OpenCV`.

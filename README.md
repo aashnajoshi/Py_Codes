@@ -9,12 +9,7 @@ This repository includes:
 - Data visualization and manipulation (e.g., Audio Visualization Tool, text-to-speech)
 
 ## Usage
-### All required libraries can be installed using a single-line command:
-```bash
-pip install -r requirements.txt
-```
-
-### While to run the code:
+### To run the code:
 ```bash
 python {file_name}.py
 ```
